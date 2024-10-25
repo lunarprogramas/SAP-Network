@@ -43,6 +43,9 @@ namespace lordhelpme
         {
             m_window = new MainWindow();
             m_window.Activate();
+
+            it_window = new MainWindow();
+            it_window.Activate();
         }
 
         private Window m_window;

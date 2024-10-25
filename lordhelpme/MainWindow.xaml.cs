@@ -29,8 +29,8 @@ namespace lordhelpme
         private DispatcherTimer _timer;
         public const string bottomBarAboutMe = "This application has been developed by lunarprogramas - V.0.1b";
         public const Boolean signedIn = false;
-        public const Boolean forceTestError = true;
-        public const Boolean forceDisableUIs = true;
+        public const Boolean forceTestError = false;
+        public const Boolean forceDisableUIs = false;
 
         DataTable users = new DataTable();
        
@@ -54,6 +54,7 @@ namespace lordhelpme
             } else
             {
                 this.signedOutMenu.Visibility = Visibility.Visible;
+                this.Homepage.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -137,6 +138,9 @@ namespace lordhelpme
                     this.incorrectCredentialsNotice.Visibility = Visibility.Visible;
                     this.incorrectCredentialsNotice.Text = "Successfully signed you in!";
                     this.incorrectCredentialsNotice.Foreground = new SolidColorBrush(Colors.DarkGreen);
+                    this.loginPage.Visibility = Visibility.Collapsed;
+                    this.Homepage.Visibility = Visibility.Visible;
+                    this.WelcomeMessage.Text = string.Format("Welcome, {0}!", this.username.Text);
                 }
                 else
                 {

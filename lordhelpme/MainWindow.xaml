@@ -43,7 +43,7 @@
 
         <!--Main Page-->
         <StackPanel Visibility="Visible" VerticalAlignment="Center" Name="Homepage">
-            <TextBlock HorizontalAlignment="Center" Foreground="White" Text="Welcome, OnlyTwentyCharacters!" FontSize="30" FontWeight="Bold"></TextBlock>
+            <TextBlock Name="WelcomeMessage" HorizontalAlignment="Center" Foreground="White" Text="Welcome, OnlyTwentyCharacters!" FontSize="30" FontWeight="Bold"></TextBlock>
             <TextBlock HorizontalAlignment="Center" Foreground="Gray" Text="Please select any of the quick actions bellow to get started!" FontSize="30" FontWeight="Bold"></TextBlock>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
