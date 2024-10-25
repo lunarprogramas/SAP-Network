@@ -1,3 +1,4 @@
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -28,7 +29,8 @@ namespace lordhelpme
         private DispatcherTimer _timer;
         public const string bottomBarAboutMe = "This application has been developed by lunarprogramas - V.0.1b";
         public const Boolean signedIn = false;
-        public const Boolean forceTestError = false;
+        public const Boolean forceTestError = true;
+        public const Boolean forceDisableUIs = true;
 
         DataTable users = new DataTable();
        
@@ -40,8 +42,12 @@ namespace lordhelpme
             this.BottomBar.Text = bottomBarAboutMe;
             Debug.Write("Started interface module!");
             this.StartClock();
-
-            if (forceTestError)
+            this.initiateUsers();
+                
+            if (forceDisableUIs)
+            {
+                return;
+            } else if (forceTestError)
             {
                 this.errorPage.Visibility = Visibility.Visible;
                 this.signedOutMenu.Visibility = Visibility.Collapsed;
@@ -105,19 +111,45 @@ namespace lordhelpme
             {
                 this.signedOutMenu.Visibility = Visibility.Visible;
                 this.loginPage.Visibility = Visibility.Collapsed;
+                this.Homepage.Visibility = Visibility.Collapsed;
             }
         }
 
         private async void LogIn(object sender, RoutedEventArgs e)
         {
-                if (this.username.Text.Length == 0 || this.password.Password.Length == 0)
+            if (this.username.Text.Length == 0 || this.password.Password.Length == 0)
+            {
+                Debug.WriteLine("No logged user!");
+                this.incorrectCredentialsNotice.Visibility = Visibility.Visible;
+                await Task.Delay(10000); // Delay for 10 seconds
+                this.incorrectCredentialsNotice.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                // Use DataTable.Select() to find matching user row
+                string filterExpression = string.Format("Id = '{0}' AND Password = '{1}'", this.username.Text, this.password.Password);
+                Debug.WriteLine(filterExpression);
+                DataRow[] foundUsers = users.Select(filterExpression);
+
+                if (foundUsers.Length > 0)
                 {
-                    Debug.WriteLine("No logged user!");
+                    // User exists, proceed with login
+                    this.incorrectCredentialsNotice.Visibility = Visibility.Visible;
+                    this.incorrectCredentialsNotice.Text = "Successfully signed you in!";
+                    this.incorrectCredentialsNotice.Foreground = new SolidColorBrush(Colors.DarkGreen);
+                }
+                else
+                {
+                    // Handle login failure
+                    Debug.WriteLine("Invalid credentials!");
                     this.incorrectCredentialsNotice.Visibility = Visibility.Visible;
                     await Task.Delay(10000);
                     this.incorrectCredentialsNotice.Visibility = Visibility.Collapsed;
                 }
-        }
+            }
+
     }
+
+}
 
 }

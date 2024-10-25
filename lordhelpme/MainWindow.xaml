@@ -41,5 +41,17 @@
             <Button Click="ReturnToMenu" Width="200" Background="DarkRed" HorizontalAlignment="Center" Padding="3">Return to Menu</Button>
         </ListView>
 
+        <!--Main Page-->
+        <StackPanel Visibility="Visible" VerticalAlignment="Center" Name="Homepage">
+            <TextBlock HorizontalAlignment="Center" Foreground="White" Text="Welcome, OnlyTwentyCharacters!" FontSize="30" FontWeight="Bold"></TextBlock>
+            <TextBlock HorizontalAlignment="Center" Foreground="Gray" Text="Please select any of the quick actions bellow to get started!" FontSize="30" FontWeight="Bold"></TextBlock>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Click="ReturnToMenu" Width="200" Background="Gray" Padding="1" Margin="10">Sign Out</Button>
+                <Button Width="200" Background="Gray" Padding="1" Margin="10">Open Inventory</Button>
+                <Button Width="200" Background="Gray" Padding="1" Margin="10">IT Help Support</Button>
+                <Button Width="200" Background="Gray" Padding="1" Margin="10">Report Software Issues</Button>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>
