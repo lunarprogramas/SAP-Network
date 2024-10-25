@@ -10,16 +10,17 @@
 
     <Grid>
         <!--Signed Out Menu-->
-        <ListView SelectionMode="None" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="20" Name="signedOutMenu">
+        <ListView Visibility="Collapsed" SelectionMode="None" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="20" Name="signedOutMenu">
+            <TextBlock Name="ClockSignedOutMenu" FontWeight="Bold" Foreground="AntiqueWhite" FontSize="70" Padding="1">00:00 AM/PM</TextBlock>
             <TextBlock Text="SAP Intranet Network" FontSize="30" FontWeight="Bold"></TextBlock>
             <TextBlock Text="You are currently signed out of the framework!" FontSize="30"></TextBlock>
-            <Button Width="200" Click="ViewLoginPage" Background="CadetBlue" Name="viewLogIn">Sign In</Button>
+            <Button Width="200" Click="ViewLoginPage" Background="CadetBlue" Padding="6" Name="viewLogIn">Sign In</Button>
         </ListView>
 
         <!--Bottom part of the screen-->
-        <ListView SelectionMode="None" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-            <TextBlock Name="Clock" HorizontalAlignment="Center" Padding="0">00:00:00 AM/PM</TextBlock>
-            <TextBlock Name="BottomBar" FontSize="20" FontFamily="Calibri"></TextBlock>
+        <ListView Name="Bottombar" SelectionMode="None" HorizontalAlignment="Center" Width="2000" VerticalAlignment="Bottom" CornerRadius="2" Padding="10" Background="CadetBlue">
+            <TextBlock Name="Clock" FontWeight="Bold" HorizontalAlignment="Center" Padding="0">00:00:00 AM/PM</TextBlock>
+            <TextBlock Name="BottomBar" HorizontalAlignment="Center" FontSize="20" FontFamily="Calibri"></TextBlock>
         </ListView>
 
         <!--Signed In parts-->
@@ -28,8 +29,16 @@
             <TextBlock Text="Please enter your sign in credentials"></TextBlock>
             <TextBox PlaceholderText="Username" Name="username"></TextBox>
             <PasswordBox PlaceholderText="Password" Name="password"></PasswordBox>
-            <Button Width="200" Background="CadetBlue" Name="logIn" HorizontalAlignment="Center">Log in</Button>
+            <TextBlock Name="incorrectCredentialsNotice" Visibility="Collapsed" Foreground="IndianRed" HorizontalAlignment="Center" FontWeight="Bold" Text="Invalid credentials!"></TextBlock>
+            <Button Width="200" Click="LogIn" Background="CadetBlue" Name="logIn" HorizontalAlignment="Center">Log in</Button>
             <Button Click="ReturnToMenu" Width="200" Background="DarkRed" Name="returnToMenu" HorizontalAlignment="Center">Return to Menu</Button>
+        </ListView>
+
+        <!--Error Occured Page-->
+        <ListView SelectionMode="None" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center" Name="errorPage">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="IndianRed" Text="⚠️ An error occured!" FontSize="30" FontWeight="Bold"></TextBlock>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="There was an error while attempiting to index nil with your mom." FontSize="30" FontWeight="Bold"></TextBlock>
+            <Button Click="ReturnToMenu" Width="200" Background="DarkRed" HorizontalAlignment="Center" Padding="3">Return to Menu</Button>
         </ListView>
 
     </Grid>
