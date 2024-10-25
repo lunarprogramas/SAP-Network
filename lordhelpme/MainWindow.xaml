@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="lordhelpme.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:lordhelpme"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid>
+        <!--Signed Out Menu-->
+        <ListView SelectionMode="None" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="20" Name="signedOutMenu">
+            <TextBlock Text="SAP Intranet Network" FontSize="30" FontWeight="Bold"></TextBlock>
+            <TextBlock Text="You are currently signed out of the framework!" FontSize="30"></TextBlock>
+            <Button Width="200" Click="ViewLoginPage" Background="CadetBlue" Name="viewLogIn">Sign In</Button>
+        </ListView>
+
+        <!--Bottom part of the screen-->
+        <ListView SelectionMode="None" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <TextBlock Name="Clock" HorizontalAlignment="Center" Padding="0">00:00:00 AM/PM</TextBlock>
+            <TextBlock Name="BottomBar" FontSize="20" FontFamily="Calibri"></TextBlock>
+        </ListView>
+
+        <!--Signed In parts-->
+        <ListView SelectionMode="None" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center" Name="loginPage">
+            <TextBlock Text="SAP Intranet Network" FontSize="30" FontWeight="Bold"></TextBlock>
+            <TextBlock Text="Please enter your sign in credentials"></TextBlock>
+            <TextBox PlaceholderText="Username" Name="username"></TextBox>
+            <PasswordBox PlaceholderText="Password" Name="password"></PasswordBox>
+            <Button Width="200" Background="CadetBlue" Name="logIn" HorizontalAlignment="Center">Log in</Button>
+            <Button Click="ReturnToMenu" Width="200" Background="DarkRed" Name="returnToMenu" HorizontalAlignment="Center">Return to Menu</Button>
+        </ListView>
+
+    </Grid>
+</Window>
